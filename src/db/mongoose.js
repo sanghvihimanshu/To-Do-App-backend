@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/himanshu', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONOGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then (() => {
         console.log('mongodb connect succesfully !');
     }).catch ((e) => {

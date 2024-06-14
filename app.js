@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors= require('cors');
@@ -7,7 +9,7 @@ const { Users } = require('./src/db/models/users.model');
 const mongoose = require('./src/db/mongoose');
 const { timestamp } = require('rxjs');
 const jwt = require('jsonwebtoken');
-const port = 8080;
+const port =process.env.PORT || 8080;
 
 
 app.use(express.json())
@@ -211,6 +213,6 @@ app.get('/user/me/access-token', verifySession, (req, res) => {
    });
 })
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });   
